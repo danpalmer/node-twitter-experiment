@@ -33,7 +33,7 @@ t.stream('statuses/filter', {'locations':'-160.0,-90.0,160.0,90.0'}, function(st
     if (data.coordinates) {
     	io.sockets.emit('tweet', {
 	    		coordinates: data.coordinates.coordinates,
-	    		text: data['text']
+	    		text: data['text'] 
 	    });
     }
   });
