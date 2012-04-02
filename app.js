@@ -5,7 +5,9 @@ var io = require('socket.io').listen(app);
 
 // Set up application and resource serving
 var port = process.env.PORT || 3000
-app.listen(port);
+app.listen(port, function () {
+  console.log('listning on port: ' + port);
+});
 app.use('/public', express.static(__dirname + '/public/'));
 app.get('/', function (req, res) {
 	res.sendfile(__dirname + '/page.html');

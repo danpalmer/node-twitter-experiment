@@ -45,7 +45,7 @@
 	      markerImage.anchor = new google.maps.Point(6, 5);
       }
 
-      var socket = io.connect('http://odin.local:8080');
+      var socket = io.connect('http://freezing-light-5807.herokuapp.com:5000/');
 
 			socket.on('tweet', function(data) {
 				var marker = new google.maps.Marker({
