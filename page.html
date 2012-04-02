@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <title>Hacking around with Node and Twitter</title>
 		<link rel="stylesheet" type="text/css" href="public/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="public/style.css"/>
 		<script src="/socket.io/socket.io.js"></script>
@@ -13,8 +14,10 @@
 			<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
 				<div class="navbar-inner">
 					<div class="container">
-						<a href="/" class="brand">Twitter Live Map</a>
-						<ul class="nav pull-right"></ul>
+						<a href="/" class="brand">Hacking around with Node and Twitter</a>
+						<ul class="nav pull-right">
+              <li>by <a href="http://danpalmer.me/">Dan Palmer</a></li><li><a href="http://twitter.com/danpalmer">@danpalmer</a></li>
+            </ul>
 					</div>
 				</div>
 			</div>
@@ -31,7 +34,6 @@
           zoom: 3,
           center: new google.maps.LatLng(20, 0),
           mapTypeId: google.maps.MapTypeId.TERRAIN,
-          /*mapTypeId: google.maps.MapTypeId.ROADMAP,*/
           backgroundColor: '#fff',
           mapTypeControl: false,
           streetViewControl: false
