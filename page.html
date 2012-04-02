@@ -24,7 +24,7 @@
 
 		<script>
 			
-			var map, markerImage;
+			var map, markerImage, markers = new Array();
 
       function initialize() {
         var myOptions = {
@@ -55,6 +55,11 @@
         	icon: markerImage,
         	title: data['text']
         });
+
+        markers.push(marker);
+        if (markers.length > 100) {
+          markers.shift().setMap(null);
+        }
 			});
 
       function loadScript() {
