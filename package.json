@@ -6,5 +6,9 @@
 		"express": "2.5.x",
 		"socket.io": "0.9.x",
 		"ntwitter": "0.3.x"
-	}
+	},
+	"engines": {
+    "node": "0.6.x",
+    "npm":  "1.1.x"
+  }
 }
