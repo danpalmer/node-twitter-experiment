@@ -1,0 +1,10 @@
+{
+	"name": "twitter-map",
+	"descripton": "something with a twitter stream or something",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "2.5.x",
+		"socket.io": "0.9.x",
+		"ntwitter": "0.3.x"
+	}
+}

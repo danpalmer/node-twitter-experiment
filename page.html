@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="public/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="public/style.css"/>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<div class="container">
+
+			<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+				<div class="navbar-inner">
+					<div class="container">
+						<a href="/" class="brand">Twitter Live Map</a>
+						<ul class="nav pull-right"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="map"></div>
+
+		<script>
+			
+			var map, markerImage;
+
+      function initialize() {
+        var myOptions = {
+          zoom: 3,
+          center: new google.maps.LatLng(20, 0),
+          mapTypeId: google.maps.MapTypeId.TERRAIN,
+          /*mapTypeId: google.maps.MapTypeId.ROADMAP,*/
+          backgroundColor: '#fff',
+          mapTypeControl: false,
+          streetViewControl: false
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), myOptions);
+        $('#map').width($(document).width()).height($(document).height() - 40);
+
+        markerImage = new google.maps.MarkerImage('/public/pin.png');
+	      markerImage.size = new google.maps.Size(32, 39);
+	      markerImage.anchor = new google.maps.Point(6, 5);
+      }
+
+      var socket = io.connect('http://odin.local:8080');
+
+			socket.on('tweet', function(data) {
+				var marker = new google.maps.Marker({
+        	position: new google.maps.LatLng(data.coordinates[1],data.coordinates[0]),
+        	map: map,
+        	animation: google.maps.Animation.DROP,
+        	icon: markerImage,
+        	title: data['text']
+        });
+			});
+
+      function loadScript() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '//maps.googleapis.com/maps/api/js?sensor=false&' +
+            'callback=initialize';
+        document.body.appendChild(script);
+      }
+
+      window.onload = loadScript;
+
+		</script>
+	</body>
+</html>
