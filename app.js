@@ -28,7 +28,7 @@ var credentials = {
 }
 
 t = new twitter(credentials);
-t.stream('statuses/filter', {'locations':'-160.0,-90.0,160.0,90.0'}, function(stream) {
+t.stream('statuses/filter', {'locations':'-180.0,-90.0,180.0,90.0'}, function(stream) {
   stream.on('data', function (data) {
     if (data.coordinates) {
     	io.sockets.emit('tweet', {
